@@ -11,7 +11,174 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <header class="l-header p-header">
+    <h1><img src="images/title_sp.svg" alt="activity log" class="p-header__title--sp">activity log</h1>
+    <h1><img src="images/title_pc.svg" alt="activity log" class="p-header__title--pc">activity log</h1>
+  </header>
+
+  <main class="l-main">
+    <!-- ABOUT SECTION -->
+    <section class="p-about">
+      <h2>くわ　じゅんな</h2>
+      <figure><img src="images/avatar.png" alt="くわじゅんなの顔イラスト"></figure>
+      <p>千葉県でフリーランスのコーダーとして活動しています。<br>静的サイトのコーディングやWordPressオリジナルテーマを用いたWebサイト制作を中心に手掛けています。<br>日々の活動や学習の記録をつけています。</p>
+    </section>
+
+    <div class="p-contents">
+      <div class="p-contents__tabs" role="tablist" aria-label="活動記録タブ">
+        <button id="tab_log" class="c-button__tab" type="button" role="tab" aria-selected="true" aria-controls="log" tabindex="0">log</button>
+        <button id="tab_report" class="c-button__tab" type="button" role="tab" aria-selected="false" aria-controls="report" tabindex="-1">report</button>
+      </div>
+
+      <!-- LOG SECTION -->
+      <div id="log" class="p-log" role="tabpanel" aria-labelledby="tab_log" tabindex="0">
+        <div class="p-calendar">
+          <div class="p-calendar__head">
+            <button class="c-button__left">前の月</button>
+            <button class="c-button__select"></button>
+            <button class="c-button__right">次の月</button>
+          </div>
+
+          <div class="p-calendar__body js-calendar"></div>
+
+        </div>
+
+        <!-- ARCHIVE -->
+        <ul class="p-log__archive">
+          <li>
+            <article class="p-logCard">
+              <h2><time datetime="2025-03-18">2025.03.18</time></h2>
+              <ul>
+                <li class="p-logCard__cat">
+                  <h3>GAS</h3>
+                  <p>WordPressとの連携</p>
+                  <p>7.5</p>
+                </li>
+                <li class="p-logCard__cat">
+                  <h3>スクール</h3>
+                  <p>定例</p>
+                  <p>1.25</p>
+                </li>
+              </ul>
+              <p class="p-logCard__text">GASに挑戦！<br>なかなか思ったように実行できず大変だったけど、できた〜<br>スッッッキリ！！</p>
+            </article>
+          </li>
+          <li>
+            <article class="p-logCard">
+              <h2><time datetime="2025-03-18">2025.03.18</time></h2>
+              <ul>
+                <li class="p-logCard__cat">
+                  <h3>GAS</h3>
+                  <p>WordPressとの連携</p>
+                  <p>7</p>
+                </li>
+                <li class="p-logCard__cat">
+                  <h3>コーディング</h3>
+                  <p>WordPressとの連携</p>
+                  <p>7.5</p>
+                </li>
+              </ul>
+              <p class="p-logCard__text">GASに挑戦！<br>なかなか思ったように実行できず大変だったけど、できた〜<br>スッッッキリ！！</p>
+            </article>
+          </li>
+          <li>
+            <article class="p-logCard">
+              <h2><time datetime="2025-03-18">2025.03.18</time></h2>
+              <ul>
+                <li class="p-logCard__cat">
+                  <h3>GAS</h3>
+                  <p>WordPressとの連携</p>
+                  <p>7.5</p>
+                </li>
+                <li class="p-logCard__cat">
+                  <h3>GAS</h3>
+                  <p>WordPressとの連携</p>
+                  <p>7.5</p>
+                </li>
+              </ul>
+              <p class="p-logCard__text">GASに挑戦！<br>なかなか思ったように実行できず大変だったけど、できた〜<br>スッッッキリ！！</p>
+            </article>
+          </li>
+          <li>
+            <article class="p-logCard">
+              <h2><time datetime="2025-03-18">2025.03.18</time></h2>
+              <ul>
+                <li class="p-logCard__cat">
+                  <h3>GAS</h3>
+                  <p>WordPressとの連携</p>
+                  <p>7.5</p>
+                </li>
+                <li class="p-logCard__cat">
+                  <h3>GAS</h3>
+                  <p>WordPressとの連携</p>
+                  <p>7.5</p>
+                </li>
+              </ul>
+              <p class="p-logCard__text">GASに挑戦！<br>なかなか思ったように実行できず大変だったけど、できた〜<br>スッッッキリ！！</p>
+            </article>
+          </li>
+          <li>
+            <article class="p-logCard">
+              <h2><time datetime="2025-03-18">2025.03.18</time></h2>
+              <ul>
+                <li class="p-logCard__cat">
+                  <h3>GAS</h3>
+                  <p>WordPressとの連携</p>
+                  <p>7.5</p>
+                </li>
+                <li class="p-logCard__cat">
+                  <h3>GAS</h3>
+                  <p>WordPressとの連携</p>
+                  <p>7.5</p>
+                </li>
+              </ul>
+              <p class="p-logCard__text">GASに挑戦！<br>なかなか思ったように実行できず大変だったけど、できた〜<br>スッッッキリ！！</p>
+            </article>
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- REPORT SECTION -->
+      <div id="report" class="p-report" role="tabpanel" aria-labelledby="tab_report" tabindex="0">
+        <div class="p-report__head">
+          <ul>
+            <li><button class="c-button__tag">月間レポート</button></li>
+            <li><button class="c-button__tag">年間レポート</button></li>
+          </ul>
+
+          <div class="p-report__month">
+            <button class="c-button__left">前の月</button>
+            <button class="c-button__select"></button>
+            <button class="c-button__right">次の月</button>
+          </div>
+
+          <div class="p-report__body">
+            <div class="p-graph">
+              <div class="p-graph__content"></div>
+
+              <div class="p-graph__desc">
+                <div class="p-graph__lanking"></div>
+                <dl>
+                  <dt>total</dt>
+                  <dd>166h</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <small>&copy; junna kuwa All rights reserved.</small>
+    <button class="c-button__top">top of log</button>
+  </footer>
   
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="js/main.js"></script>
 </body>
