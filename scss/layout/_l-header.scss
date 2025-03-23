@@ -1,0 +1,11 @@
+@use "../foundation/variables" as *;
+
+/* ----- header layout ----- */
+.l-header {
+  padding-block: 200px;
+  width: 100%;
+
+  @include breakpoint(tablet) {
+    padding: 320px 0 400px;
+  }
+}

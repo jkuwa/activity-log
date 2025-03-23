@@ -42,4 +42,40 @@ a {
 a:hover {
   opacity: 0.7;
 }
+
+/* ----- header layout ----- */
+.l-header {
+  padding-block: 200px;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .l-header {
+    padding: 320px 0 400px;
+  }
+}
+
+/* ----- header ----- */
+.p-header h1 {
+  font-size: 0;
+  text-align: center;
+}
+.p-header__title--sp {
+  width: clamp(208px, 50vw, 400px);
+  height: auto;
+}
+@media (min-width: 768px) {
+  .p-header__title--sp {
+    display: none;
+  }
+}
+.p-header__title--pc {
+  display: none;
+}
+@media (min-width: 768px) {
+  .p-header__title--pc {
+    width: clamp(400px, 50vw, 600px);
+    height: auto;
+    display: inline-block;
+  }
+}
 /*# sourceMappingURL=style.css.map */
