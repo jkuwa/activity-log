@@ -10,6 +10,7 @@
 // layout
 // ============================================================
 @use "layout/l-header";
+@use "layout/l-main";
 
 
 // ============================================================
@@ -20,6 +21,7 @@
 
 //  ----- project ----- 
 @use "object/project/header";
+@use "object/project/about";
 
 
 // ----- utility -----
