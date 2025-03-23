@@ -14,14 +14,14 @@
       @content ;
     }
   }
-  @if $point==pc2 {
-    @media (min-width: 1440px) {
-      @content ;
-    }
-  }
 }
 
 
 // ============================================================
 // variables
 // ============================================================
+$bg-color: #FEFEFE;
+$main-color: #246286;
+$black-color: #454545;
+$red-color: #B01215;
+$gray-color: #D7D7D7;
