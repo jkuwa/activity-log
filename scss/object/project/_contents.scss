@@ -1,0 +1,38 @@
+@use "../../foundation/variables" as *;
+
+/* ----- contents ----- */
+.p-contents {
+  width: 100%;
+
+  &__tabs {
+    border-bottom: 1px solid $main-color;
+    position: relative;
+
+    > div {
+      position: absolute;
+      left: 50%;
+      bottom: -1px;
+      transform: translateX(-50%);
+    }
+
+    button + button {
+      margin-left: 12px;
+
+      @include breakpoint(tablet) {
+        margin-left: 24px;
+      }
+    }
+
+    button[aria-selected="true"] {
+      font-weight: 700;
+    }
+
+    button[aria-selected="false"] {
+      padding-bottom: 11px;
+
+      @include breakpoint(tablet) {
+        padding-bottom: 14px;
+      }
+    }
+  }
+}

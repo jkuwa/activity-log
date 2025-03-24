@@ -59,6 +59,30 @@ a:hover {
   width: 100%;
 }
 
+/* ----- button component ----- */
+.c-button--tab {
+  padding-block: 15px;
+  width: 120px;
+  border: 1px solid #246286;
+  border-bottom: 1px solid #FEFEFE;
+  border-radius: 6px 6px 0 0;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .c-button--tab {
+    width: 258px;
+    padding-block: 20px;
+    font-size: 2rem;
+  }
+}
+
+/* ----- inner component ----- */
+.c-inner {
+  margin-inline: auto;
+  width: 82.2%;
+  max-width: 840px;
+}
+
 /* ----- header ----- */
 .p-header h1 {
   font-size: 0;
@@ -135,6 +159,40 @@ a:hover {
     max-width: 480px;
     font-size: 1.6rem;
     text-align: center;
+  }
+}
+
+/* ----- contents ----- */
+.p-contents {
+  width: 100%;
+}
+.p-contents__tabs {
+  border-bottom: 1px solid #246286;
+  position: relative;
+}
+.p-contents__tabs > div {
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  transform: translateX(-50%);
+}
+.p-contents__tabs button + button {
+  margin-left: 12px;
+}
+@media (min-width: 768px) {
+  .p-contents__tabs button + button {
+    margin-left: 24px;
+  }
+}
+.p-contents__tabs button[aria-selected=true] {
+  font-weight: 700;
+}
+.p-contents__tabs button[aria-selected=false] {
+  padding-bottom: 11px;
+}
+@media (min-width: 768px) {
+  .p-contents__tabs button[aria-selected=false] {
+    padding-bottom: 14px;
   }
 }
 /*# sourceMappingURL=style.css.map */
