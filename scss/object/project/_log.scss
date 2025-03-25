@@ -3,6 +3,7 @@
 /* ----- log section ----- */
 .p-log {
   padding: 92px 0 40px;
+  display: none;
 
   @include breakpoint(tablet) {
     padding: 170px 0 20px;
@@ -37,5 +38,9 @@
         transform: translateX(-50%);
       }
     }
+  }
+
+  &.is-open {
+    display: block;
   }
 }

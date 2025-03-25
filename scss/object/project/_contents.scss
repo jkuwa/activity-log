@@ -35,17 +35,5 @@
         margin-left: 24px;
       }
     }
-
-    button[aria-selected="true"] {
-      font-weight: 700;
-    }
-
-    button[aria-selected="false"] {
-      padding-bottom: 11px;
-
-      @include breakpoint(tablet) {
-        padding-bottom: 14px;
-      }
-    }
   }
 }

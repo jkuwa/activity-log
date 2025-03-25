@@ -1,0 +1,10 @@
+@use "../../foundation/variables" as *;
+
+/* ----- report section ----- */
+.p-report {
+  display: none;
+
+  &.is-open {
+    display: block;
+  }
+}

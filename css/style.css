@@ -61,18 +61,27 @@ a:hover {
 
 /* ----- button component ----- */
 .c-button--tab {
-  padding-block: 15px;
+  padding: 15px 0 11px;
   width: 120px;
   border: 1px solid #246286;
-  border-bottom: 2px solid #FEFEFE;
+  border-bottom: 1px solid #FEFEFE;
   border-radius: 6px 6px 0 0;
   text-align: center;
 }
 @media (min-width: 768px) {
   .c-button--tab {
+    padding: 20px 0 14px;
     width: 258px;
-    padding-block: 20px;
     font-size: 2rem;
+  }
+}
+.c-button--tab.is-current {
+  padding-bottom: 15px;
+  font-weight: 700;
+}
+@media (min-width: 768px) {
+  .c-button--tab.is-current {
+    padding-bottom: 20px;
   }
 }
 
@@ -232,21 +241,11 @@ a:hover {
     margin-left: 24px;
   }
 }
-.p-contents__tabs button[aria-selected=true] {
-  font-weight: 700;
-}
-.p-contents__tabs button[aria-selected=false] {
-  padding-bottom: 11px;
-}
-@media (min-width: 768px) {
-  .p-contents__tabs button[aria-selected=false] {
-    padding-bottom: 14px;
-  }
-}
 
 /* ----- log section ----- */
 .p-log {
   padding: 92px 0 40px;
+  display: none;
 }
 @media (min-width: 768px) {
   .p-log {
@@ -282,6 +281,9 @@ a:hover {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+}
+.p-log.is-open {
+  display: block;
 }
 
 /* ----- calendar ----- */
@@ -485,5 +487,13 @@ a:hover {
   .p-logCard__text {
     margin-top: 24px;
   }
+}
+
+/* ----- report section ----- */
+.p-report {
+  display: none;
+}
+.p-report.is-open {
+  display: block;
 }
 /*# sourceMappingURL=style.css.map */

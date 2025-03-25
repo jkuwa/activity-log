@@ -27,13 +27,13 @@
     <div class="p-contents">
       <div class="p-contents__tabs" role="tablist" aria-label="活動記録タブ">
         <div class="c-inner">
-          <button id="tab_log" class="c-button--tab" type="button" role="tab" aria-selected="true" aria-controls="log" tabindex="0">log</button>
-          <button id="tab_report" class="c-button--tab" type="button" role="tab" aria-selected="false" aria-controls="report" tabindex="-1">report</button>
+          <button id="tab_log" class="c-button--tab js-tabBtn is-current" type="button" role="tab" aria-selected="true" aria-controls="log" tabindex="0">log</button>
+          <button id="tab_report" class="c-button--tab js-tabBtn" type="button" role="tab" aria-selected="false" aria-controls="report" tabindex="-1">report</button>
         </div>
       </div>
 
       <!-- LOG SECTION -->
-      <section id="log" class="c-inner p-log" role="tabpanel" aria-labelledby="tab_log" tabindex="0">
+      <section id="log" class="c-inner p-log js-tabContent is-open" role="tabpanel" aria-labelledby="tab_log" tabindex="0">
         <!-- CALENDAR -->
         <div class="p-calendar js-calendar"></div>
 
@@ -135,7 +135,7 @@
       </section>
 
       <!-- REPORT SECTION -->
-      <div id="report" class="p-report" role="tabpanel" aria-labelledby="tab_report" tabindex="0">
+      <div id="report" class="p-report js-tabContent" role="tabpanel" aria-labelledby="tab_report" tabindex="0">
         <div class="p-report__head">
           <ul>
             <li><button class="c-button__tag">月間レポート</button></li>

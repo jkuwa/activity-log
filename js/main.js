@@ -1,5 +1,50 @@
 'use strict';
 
+$(function() {
+  // ---------- タブ ----------
+  $(".js-tabBtn").on('click', function() {
+    if ( $(this).hasClass('is-current') ) {
+      return;
+    }
+    // 選択中のタブを外す
+    $(".is-current").removeClass('is-current').attr({
+      'aria-selected': 'false',
+      'tabindex': '-1',
+    });
+    $(".js-tabContent").removeClass('is-open');
+
+    // コンテンツを表示
+    const index = $(".js-tabBtn").index(this);
+    $(".js-tabContent").eq(index).addClass('is-open');
+    // タブの切り替え
+    $(this).addClass('is-current').attr({
+      'aria-selected': 'true',
+      'tabindex': '0'
+    })
+  });
+
+  // キーボード操作
+  $(".js-tabBtn").keydown(function(e) {
+    if ( e.which === 37 ) {
+      e.preventDefault();
+      const prevTab = $(this).prev('.js-tabBtn');
+
+      if ( prevTab.length ) {
+        prevTab.focus();
+      }
+    } else if ( e.which === 39 ) {
+      e.preventDefault();
+      const nextTab = $(this).next('.js-tabBtn');
+
+      if ( nextTab.length ) {
+        nextTab.focus();
+      }
+    }
+  });
+
+});
+
+
 {
   // ---------- FullCalendar ----------
   document.addEventListener('DOMContentLoaded', () => {
