@@ -64,7 +64,7 @@ a:hover {
   padding-block: 15px;
   width: 120px;
   border: 1px solid #246286;
-  border-bottom: 1px solid #FEFEFE;
+  border-bottom: 2px solid #FEFEFE;
   border-radius: 6px 6px 0 0;
   text-align: center;
 }
