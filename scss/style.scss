@@ -19,13 +19,16 @@
 //  ----- component ----- 
 @use "object/component/button";
 @use "object/component/inner";
+@use "object/component/tag";
 
 
 //  ----- project ----- 
 @use "object/project/header";
 @use "object/project/about";
 @use "object/project/contents";
+@use "object/project/log";
 @use "object/project/calendar";
+@use "object/project/logCard";
 
 
 // ----- utility -----

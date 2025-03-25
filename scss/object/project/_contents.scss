@@ -3,6 +3,19 @@
 /* ----- contents ----- */
 .p-contents {
   width: 100%;
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 76.3%;
+    max-width: 840px;
+    height: 1px;
+    background-color: $gray-color;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+  }
 
   &__tabs {
     border-bottom: 1px solid $main-color;

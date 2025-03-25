@@ -1,0 +1,81 @@
+@use "../../foundation/variables" as *;
+
+/* ----- log card ----- */
+.p-logCard {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 600px;
+  font-size: 1.4rem;
+
+  @include breakpoint(tablet) {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+
+    @include breakpoint(tablet) {
+      font-size: 2rem;
+    }
+  }
+
+  h4 {
+    padding: 8px;
+    width: 90px;
+    font-size: 1.2rem;
+    line-height: 1;
+    text-align: center;
+
+    @include breakpoint(tablet) {
+      width: 110px;
+      font-size: 1.4rem;
+    }
+  }
+
+  ul {
+    margin-top: 8px;
+
+    @include breakpoint(tablet) {
+      margin-top: 16px;
+    }
+  }
+
+  &__cat {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    &:not(:first-child) {
+      margin-top: 6px;
+
+      @include breakpoint(tablet) {
+        margin-top: 8px;
+      }
+    }
+
+    p:nth-child(2) {
+      margin-left: 15px;
+
+      @include breakpoint(tablet) {
+        margin-left: 24px;
+      }
+    }
+
+    p + p {
+      margin-left: auto;
+
+      &::after {
+        content: "h";
+        margin-left: 2px;
+      }
+    }
+  }
+
+  &__text {
+    margin-top: 16px;
+
+    @include breakpoint(tablet) {
+      margin-top: 24px;
+    }
+  }
+}

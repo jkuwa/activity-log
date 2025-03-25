@@ -1,0 +1,40 @@
+@use "../../foundation/variables" as *;
+
+/* ----- tag component ----- */
+.c-tag {
+  border: 1px solid $main-color;
+  border-right: none;
+  background-color: $bg-color;
+  position: relative;
+
+  &::before, &::after {
+    content: "";
+    width: auto;
+    position: absolute;
+    left: 100%;
+  }
+
+  &::before {
+    height: calc(100% - 8px);
+    aspect-ratio: 1 / 2;
+    background-color: #acacac;
+    position: absolute;
+    bottom: 4px;
+    z-index: -1;
+    filter: blur(4px);
+  }
+
+  &::after {
+    height: 100%;
+    aspect-ratio: 3 / 10;
+    box-sizing: content-box;
+    border: 1px solid $main-color;
+    border-left: none;
+    border-radius: 0 0 4px 0;
+    background-color: $bg-color;
+    display: block;
+    bottom: -1px;
+    transform: skewY(-12deg);
+    transform-origin: left bottom;
+  }
+}
