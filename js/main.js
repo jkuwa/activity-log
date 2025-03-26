@@ -99,7 +99,7 @@ $(function() {
     }
 
     const [year, month] = monthInput.split("-");
-    const url = `https://script.google.com/macros/s/AKfycby-XNZoasusI39MDGszVTI8PF87MAjr4GOPXZTXQYysFPiALiKL7I1igFvHucNLu9_y/exec?year=${year}&month=${month}`;
+    const url = `https://script.google.com/macros/s/AKfycbyAAn6f_wblOfB_GUnxPooyQIUqHhHoPuJmTcITT4iKKmb4FYh_GT3ZoxljQUCAdj1k/exec?year=${year}&month=${month}`;
 
     try {
       const response = await fetch(url);   // 非同期でデータ取得
@@ -116,19 +116,20 @@ $(function() {
   // グラフの描画
   function updateChart(data, title) {
     // weekKeyを取得
-    const allWeekKeys = [...new Set(data.flatMap(item => Object.keys(item).filter(key => key !== 'category')))];
-    allWeekKeys.sort((a, b) => a.localeCompare(b, undefined, {numeric: true}));   // 順に並べる
+    const allWeekKeys = [...new Set( data.flatMap( item => Object.keys(item).filter( key => key !== 'category' )))];
+    allWeekKeys.sort( (a, b) => a.localeCompare(b, undefined, {numeric: true}) );   // 順に並べる
     const labels = allWeekKeys;
+
     // カテゴリ名取得
-    const categories = data.map(item => item.category);
+    const categories = data.map( item => item.category );
 
     // データセット
-    const datasets = categories.map(category => {
+    const datasets = categories.map( category => {
       return {
         label: category,
-        data: labels.map(weekKey => {
-          const categoryData = data.find(item => item.category === category);
-          return categoryData ? categoryData[weekKey] : 0;
+        data: labels.map( weekKey => {
+          const categoryData = data.find( item => item.category === category);
+          return categoryData[weekKey] ? categoryData[weekKey] : 0;
         }),
       };
     });
@@ -180,5 +181,19 @@ $(function() {
       }
     });
   }
+
+  // ページ読み込み時に実行
+  document.addEventListener('DOMContentLoaded', () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = ("0" + (today.getMonth() + 1)).slice(-2);
+    const currentMonth = `${year}-${month}`;
+
+    // input にセット
+    const monthInput = document.querySelector("#month");
+    monthInput.value = currentMonth;
+
+    fetchData();
+  })
 }
 
