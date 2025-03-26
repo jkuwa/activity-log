@@ -86,10 +86,13 @@ $(function() {
 
 
   // ---------- Chart ----------
-  document.querySelector(".js-selectMonth").addEventListener('click', function() {
+  const ctx = document.querySelector(".js-chart");
+
+  // 年月取得
+  document.querySelector(".js-setMonth").addEventListener('click', function() {
     fetchData();
   });
-
+  
   // スプシ取得
   async function fetchData() {
     const monthInput = document.querySelector("#month").value;
@@ -134,8 +137,6 @@ $(function() {
       };
     });
 
-    const ctx = document.querySelector(".js-chart");
-
     if (myChart) {
       myChart.destroy();
     }
@@ -154,10 +155,10 @@ $(function() {
             text: title,
             position: 'bottom',
             font: {
-              size: 20,
+              size: 16,
               weight: 400
             },
-            padding: {top: 32}
+            padding: {top: 16}
           },
           tooltip: {
             backgroundColor: '#fff',
@@ -167,22 +168,48 @@ $(function() {
               weight: 400
             },
             bodyColor: '#246286',
+            borderColor: '#246286',
+            borderWidth: 1
           }
         },
         scales: {
           x: {
-            stacked: true
+            stacked: true,
+            ticks: {
+              font: {
+                size: 14
+              }
+            }
           },
           y: {
             stacked: true,
             beginAtZero: true
           }
-        }
+        },
+        barPercentage: 0.5,
+        responsive: true,
+        maintainAspectRatio: false
       }
     });
   }
 
-  // ページ読み込み時に実行
+  // canvasサイズ指定
+  function setCanvasHeight() {
+    const bp = 768;
+    if ( window.innerWidth < bp ) {
+      ctx.style.height = '360px';
+    } else {
+      ctx.style.height = '520px';
+    }
+  }
+
+  // 初回実行
+  setCanvasHeight();
+  // リサイズ時実行
+  window.addEventListener('resize', setCanvasHeight);
+
+
+  // ページ読み込み時にグラフ表示
   document.addEventListener('DOMContentLoaded', () => {
     const today = new Date();
     const year = today.getFullYear();
@@ -194,6 +221,6 @@ $(function() {
     monthInput.value = currentMonth;
 
     fetchData();
-  })
+  });
 }
 

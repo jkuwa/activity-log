@@ -136,33 +136,33 @@
 
       <!-- REPORT SECTION -->
       <div id="report" class="p-report js-tabContent" role="tabpanel" aria-labelledby="tab_report" tabindex="0">
-        <div class="p-report__head">
+        <div class="c-inner p-report__head">
           <ul>
-            <li><button class="c-button__tag">月間レポート</button></li>
-            <li><button class="c-button__tag">年間レポート</button></li>
+            <li><button class="c-tag">月間レポート</button></li>
+            <li><button class="c-tag">年間レポート</button></li>
           </ul>
 
           <div class="p-report__month">
-            <button class="c-button__left">前の月</button>
-            <button class="c-button__select"></button>
-            <button class="c-button__right">次の月</button>
+            <label for="month">select month: </label>
+            <input type="month" id="month">
+            <button class="js-setMonth">select</button>
           </div>
-
-          <div class="p-report__body">
-            <div class="p-graph">
-              <div class="p-graph__content"></div>
-
-              <div class="p-graph__desc">
-                <div class="p-graph__lanking"></div>
-                <dl>
-                  <dt>total</dt>
-                  <dd>166h</dd>
-                </dl>
-              </div>
-            </div>
-          </div>
-
         </div>
+
+        <div class="p-graph">
+          <div class="c-inner p-graph__content">
+            <canvas class="js-chart" width="340" height="360" aria-label="月毎の学習時間グラフ"></canvas>
+          </div>
+          
+          <div class="p-graph__desc">
+            <div class="p-graph__lanking"></div>
+            <dl>
+              <dt>total</dt>
+              <dd>166h</dd>
+            </dl>
+          </div>
+        </div>
+        
       </div>
 
     </div>
@@ -174,6 +174,7 @@
   </footer>
   
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" integrity="sha512-CQBWl4fJHWbryGE+Pc7UAxWMUMNMWzWxF4SQo9CgkJIN1kx6djDQZjh3Y8SZ1d+6I+1zze6Z7kHXO7q3UyZAWw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="js/main.js"></script>
 </body>
