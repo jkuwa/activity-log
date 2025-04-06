@@ -6,6 +6,7 @@
   border-right: none;
   background-color: $bg-color;
   position: relative;
+  text-align: center;
 
   &::before, &::after {
     content: "";

@@ -24,7 +24,6 @@
     width: 90px;
     font-size: 1.2rem;
     line-height: 1;
-    text-align: center;
 
     @include breakpoint(tablet) {
       width: 110px;
@@ -63,11 +62,6 @@
 
     p + p {
       margin-left: auto;
-
-      &::after {
-        content: "h";
-        margin-left: 2px;
-      }
     }
   }
 
