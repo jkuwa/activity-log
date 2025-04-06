@@ -2,19 +2,13 @@
 
 /* ----- contents ----- */
 .p-contents {
+  margin-top: 56px;
   width: 100%;
+  border-bottom: 1px solid $gray-color;
   position: relative;
 
-  &::after {
-    content: "";
-    width: 76.3%;
-    max-width: 840px;
-    height: 1px;
-    background-color: $gray-color;
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
+  @include breakpoint(tablet) {
+    margin-top: 80px;
   }
 
   &__tabs {
