@@ -21,6 +21,11 @@
   font-family: "M PLUS Rounded 1c", sans-serif;
 }
 
+@mixin monteserrat() {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+}
+
 
 // ============================================================
 // variables

@@ -45,6 +45,7 @@
     }
 
     h2 {
+      @include monteserrat();
       font-size: 2.4rem;
     }
 
