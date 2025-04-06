@@ -2,7 +2,94 @@
 
 /* ----- report section ----- */
 .p-report {
+  padding: 96px 0 128px;
   display: none;
+  overflow-x: hidden;
+
+  @include breakpoint(tablet) {
+    padding: 170px 0 200px;
+  }
+
+  &__head {
+    padding-left: min(6%, 25px);
+
+    @include breakpoint(tablet) {
+      padding-left: 40px;
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      font-size: 1.4rem;
+
+      @include breakpoint(tablet) {
+        font-size: 1.6rem;
+      }
+
+      li + li::before {
+        content: "/";
+        padding-inline: 6px;
+      }
+
+      button {
+        padding: 6px 12px;
+        color: $gray-color;
+
+        &.is-selected {
+          color: $main-color;
+          font-weight: 700;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+  &__select {
+    margin-top: 18px;
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 308px;
+      height: 57.8px;
+      background: url(../images/bird.svg) center / contain no-repeat;
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 71%;
+      transform: translateY(-50%);
+
+      @include breakpoint(tablet) {
+        display: block;
+      }
+    }
+
+    input {
+      padding: 6px 24px;
+      width: 172px;
+      border: 1px solid $main-color;
+      border-radius: 4px;
+      background-color: $bg-color;
+      color: $main-color;
+      text-align: center;
+
+      @include breakpoint(tablet) {
+        padding-block: 8px;
+        width: 220px;
+      }
+    }
+
+    button {
+      padding: 4px 16px;
+
+      @include breakpoint(tablet) {
+        padding: 6px 18px;
+      }
+    }
+  }
 
   &.is-open {
     display: block;

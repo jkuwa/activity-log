@@ -16,6 +16,11 @@
   }
 }
 
+// font
+@mixin m-plus1() {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+}
+
 
 // ============================================================
 // variables
@@ -25,3 +30,9 @@ $main-color: #246286;
 $black-color: #454545;
 $red-color: #B01215;
 $gray-color: #D7D7D7;
+$border-color: rgba(217, 217, 217, .3);
+
+// css変数
+:root {
+  --cat-color: $bg-color;
+}

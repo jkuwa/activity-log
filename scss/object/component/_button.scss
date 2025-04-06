@@ -24,3 +24,45 @@
     }
   }
 }
+
+.c-button--select {
+  margin-bottom: 6px;
+  border: 1px solid $main-color;
+  border-radius: 4px;
+  background-color: $bg-color;
+  display: block;
+  position: relative;
+  transition: margin .2s;
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 90%;
+    box-sizing: content-box;
+    border: 1px solid $main-color;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .2);
+    display: block;
+    position: absolute;
+    bottom: -6px;
+    left: -1px;
+    z-index: -1;
+    transition: bottom .2s;
+  }
+
+  &:hover {
+    margin-bottom: 3px;
+
+    &::before {
+      bottom: -3px;
+    }
+  }
+
+  &:active {
+    margin: 0px;
+
+    &::before {
+      bottom: 0;
+    }
+  }
+}

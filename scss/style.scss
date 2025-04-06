@@ -20,6 +20,8 @@
 @use "object/component/button";
 @use "object/component/inner";
 @use "object/component/tag";
+@use "object/component/text";
+@use "object/component/background";
 
 
 //  ----- project ----- 
@@ -30,6 +32,8 @@
 @use "object/project/calendar";
 @use "object/project/logCard";
 @use "object/project/report";
+@use "object/project/graph";
+@use "object/project/table";
 
 
 // ----- utility -----

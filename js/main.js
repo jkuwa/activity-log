@@ -1,7 +1,9 @@
 'use strict';
 
 $(function() {
-  // ---------- タブ ----------
+  // --------------------
+  // タブ
+  // --------------------
   $(".js-tabBtn").on('click', function() {
     if ( $(this).hasClass('is-current') ) {
       return;
@@ -48,10 +50,13 @@ $(function() {
   let myChart;
 
 {
-  // ---------- FullCalendar ----------
+  // --------------------
+  // FullCalendar
+  // --------------------
   document.addEventListener('DOMContentLoaded', () => {
     const calendarEL = document.querySelector(".js-calendar");
     const dayNames = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+
     const calendar = new FullCalendar.Calendar(calendarEL, {
       initialView: 'dayGridMonth',
       // ツールバー
@@ -85,7 +90,9 @@ $(function() {
   });
 
 
-  // ---------- Chart ----------
+  // --------------------
+  // Chart
+  // --------------------
   const ctx = document.querySelector(".js-chart");
 
   // 年月取得
@@ -102,46 +109,57 @@ $(function() {
     }
 
     const [year, month] = monthInput.split("-");
-    const url = `https://script.google.com/macros/s/AKfycbyAAn6f_wblOfB_GUnxPooyQIUqHhHoPuJmTcITT4iKKmb4FYh_GT3ZoxljQUCAdj1k/exec?year=${year}&month=${month}`;
+    const url = `https://script.google.com/macros/s/AKfycby_DNGYh2nVOOr_jCRum4Y2iwZyGS6W6uHRcvzHveGK0qNxkKQKS460CJ_JurU8YZD9/exec?year=${year}&month=${month}`;
 
     try {
       const response = await fetch(url);   // 非同期でデータ取得
       const data = await response.json();   // JSON読み取り
-      const title = `${year}.${month}`;
+      const title = `${year}/${month}`;
 
-      updateChart(data, title);
+      const weeklyData = data.weeklyData;
+      const totalHours = data.totalHours;
+      const categoryRanking = data.categoryRanking;
+
+      // setTitle(title);
+      updateChart(weeklyData, title, categoryRanking);
+      setTotal(totalHours);
+
     } catch (error) {
       console.error("データ取得エラー: ", error);
       alert("データ取得に失敗しました");
     }
   }
 
-  // グラフの描画
-  function updateChart(data, title) {
+  // ---------- グラフ描画 ----------
+  function updateChart(data, title, ranking) {
     // weekKeyを取得
-    const allWeekKeys = [...new Set( data.flatMap( item => Object.keys(item).filter( key => key !== 'category' )))];
+    const dataArr = Object.values(data);
+    const allWeekKeys = [...new Set( dataArr.flatMap( item => Object.keys(item)))];
     allWeekKeys.sort( (a, b) => a.localeCompare(b, undefined, {numeric: true}) );   // 順に並べる
     const labels = allWeekKeys;
 
     // カテゴリ名取得
-    const categories = data.map( item => item.category );
+    const categories = Object.keys(data);
 
     // データセット
     const datasets = categories.map( category => {
       return {
         label: category,
         data: labels.map( weekKey => {
-          const categoryData = data.find( item => item.category === category);
-          return categoryData[weekKey] ? categoryData[weekKey] : 0;
-        }),
+          return data[category][weekKey] ? data[category][weekKey] : 0;
+        })
       };
     });
 
+    // ---------- Chart.js 設定 ----------
+    // グラフ初期化
     if (myChart) {
       myChart.destroy();
     }
+    
+    const mainColor = '#246286';
+    Chart.defaults.font.family = "'M PLUS Rounded 1c', 'sans-serif'";
 
-    Chart.defaults.font.family = "'Zen Maru Gothic', 'serif'";
     myChart = new Chart(ctx, {
       type: 'bar',
       data: {
@@ -154,21 +172,22 @@ $(function() {
             display: true,
             text: title,
             position: 'bottom',
+            color: mainColor,
             font: {
-              size: 16,
-              weight: 400
+              size: 14,
+              weight: 500
             },
             padding: {top: 16}
           },
           tooltip: {
             backgroundColor: '#fff',
-            titleColor: '#246286',
+            titleColor: mainColor,
             titleFont: {
               size: 14,
               weight: 400
             },
-            bodyColor: '#246286',
-            borderColor: '#246286',
+            bodyColor: mainColor,
+            borderColor: mainColor,
             borderWidth: 1
           }
         },
@@ -177,13 +196,27 @@ $(function() {
             stacked: true,
             ticks: {
               font: {
-                size: 14
+                size: 12
               }
+            },
+            grid: {
+              display: false
             }
           },
           y: {
             stacked: true,
-            beginAtZero: true
+            beginAtZero: true,
+            border: {
+              dash: [2, 2]
+            },
+            title: {
+              display: true,
+              text: 'hours',
+              font: {
+                size: 14
+              },
+              padding: 0
+            }
           }
         },
         barPercentage: 0.5,
@@ -191,17 +224,55 @@ $(function() {
         maintainAspectRatio: false
       }
     });
+
+    // ---------- カテゴリランキング作成 ---------
+    // 対応する色を取得
+    const topCategories = ranking.map( item => {
+      const categoryName = item.category;
+      const obj = datasets.find( item => item.label === categoryName );
+      const itemColor = obj.backgroundColor;
+      item.color = itemColor;
+      return item;
+    });
+
+    // ランキング出力
+    const categoryRanking = document.querySelector(".js-table");
+    categoryRanking.innerHTML = '';
+    topCategories.forEach( (item, index) => {
+      const category = item.category;
+      const hours = item.hours;
+      const percentage = item.percentage;
+      const color = item.color;
+      const number = index + 1;
+      let text = '';
+
+      text += '<tr class="js-ranking' + number + '">';
+      text += '<th><span>0' + number + '</span></th>';
+      text += '<td class="p-table__category">' + category + '</td>';
+      text += '<td class="c-hours p-table__hours">' + hours + '</td>';
+      text += '<td class="p-table__per">' + percentage + '</td>';
+      text += '</tr>';
+      
+      // HTML作成
+      categoryRanking.insertAdjacentHTML('beforeend', text);
+
+      // スタイル指定
+      const tableHead = '.js-ranking' + number + ' > th';
+      document.querySelector(tableHead).style.setProperty('--cat-color', color);
+    });
   }
 
-  // canvasサイズ指定
+
+  // ---------- canvasサイズ指定 ---------
   function setCanvasHeight() {
     const bp = 768;
     if ( window.innerWidth < bp ) {
-      ctx.style.height = '360px';
+      ctx.style.height = '340px';
     } else {
-      ctx.style.height = '520px';
+      ctx.style.height = '420px';
     }
   }
+
 
   // 初回実行
   setCanvasHeight();
@@ -222,5 +293,12 @@ $(function() {
 
     fetchData();
   });
+
+
+  // ---------- Total ----------
+  function setTotal(value) {
+    const total = document.querySelector(".js-total");
+    total.textContent = value;
+  }
 }
 
