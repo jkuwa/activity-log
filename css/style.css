@@ -395,7 +395,12 @@ a:hover {
 .p-calendar .fc-toolbar.fc-header-toolbar h2 {
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 500;
-  font-size: 2.4rem;
+  font-size: 2rem;
+}
+@media (min-width: 768px) {
+  .p-calendar .fc-toolbar.fc-header-toolbar h2 {
+    font-size: 2.4rem;
+  }
 }
 .p-calendar .fc-toolbar.fc-header-toolbar > * > :not(:first-child) {
   margin-left: 4px;
