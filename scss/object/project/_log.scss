@@ -6,7 +6,7 @@
   display: none;
 
   @include breakpoint(tablet) {
-    padding: 170px 0 20px;
+    padding: 170px 0 60px;
   }
 
   &__archive {
@@ -17,7 +17,7 @@
     }
 
     > li {
-      padding-block: 40px;
+      padding-block: 48px;
       position: relative;
 
       @include breakpoint(tablet) {
@@ -30,7 +30,7 @@
         max-width: 300px;
         height: 1px;
         background-size: 8px 1px;
-        background-image: linear-gradient(to right, $gray-color 4px, transparent 4px);
+        background-image: linear-gradient(to right, $main-color 4px, transparent 4px);
         background-repeat: repeat-x;
         position: absolute;
         top: 0;
