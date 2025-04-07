@@ -99,15 +99,15 @@
   }
 
   &__ranking {
-    margin-top: 92px;
+    margin-top: 116px;
     max-width: 100%;
     display: inline-block;
     position: relative;
     text-align: center;
     
     @include breakpoint(tablet) {
-      margin: 112px 13% 0 0;
-      padding: 0 16.3% 0 13.9%;
+      margin: 156px 13% 0 0;
+      padding: 0 10.7% 0 8.8%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -136,20 +136,19 @@
     }
 
     img {
-      width: calc(100% + 73px + 76px);
-      height: calc(100% + 48px + 55.2px);
+      width: calc(100% + 58px + 60px);
+      height: calc(100% + 77px + 65px);
       max-width: none;
       position: absolute;
-      top: -48px;
-      left: -76px;
+      top: -77px;
+      left: -58px;
       object-fit: fill;
-      opacity: .7;
       pointer-events: none;
 
       @include breakpoint(tablet) {
         width: 100%;
-        height: calc(100% + 88px + 83px);
-        top: -88px;
+        height: calc(100% + 116px + 88px);
+        top: -116px;
         left: 0;
       }
     }
