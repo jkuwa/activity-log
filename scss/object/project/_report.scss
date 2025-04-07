@@ -17,30 +17,16 @@
       padding-left: 40px;
     }
 
-    ul {
-      display: flex;
-      align-items: center;
-      font-size: 1.4rem;
+    fieldset {
+      border: none;
 
-      @include breakpoint(tablet) {
-        font-size: 1.6rem;
+      label + label {
+        margin-left: 18px;
       }
+    }
 
-      li + li::before {
-        content: "/";
-        padding-inline: 6px;
-      }
-
-      button {
-        padding: 6px 12px;
-        color: $gray-color;
-
-        &.is-selected {
-          color: $main-color;
-          font-weight: 700;
-          pointer-events: none;
-        }
-      }
+    input[type=radio] {
+      margin-right: 4px;
     }
   }
 
@@ -67,18 +53,23 @@
       }
     }
 
-    input {
+    input, select {
       padding: 6px 24px;
       width: 172px;
       border: 1px solid $main-color;
       border-radius: 4px;
       background-color: $bg-color;
+      display: none;
       color: $main-color;
       text-align: center;
 
       @include breakpoint(tablet) {
         padding-block: 8px;
         width: 220px;
+      }
+
+      &.is-open {
+        display: block;
       }
     }
 

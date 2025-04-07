@@ -95,13 +95,26 @@ $(function() {
   // --------------------
   const ctx = document.querySelector(".js-chart");
 
-  // 年月取得
+  // ---------- form 切り替え ----------
+  const type = document.querySelectorAll("input[name='select']");
+  const input = document.querySelectorAll(".js-select");
+
+  type.forEach( (radio) => {
+    radio.addEventListener('change', function() {
+      input.forEach( (e) => {
+        e.classList.toggle('is-open');
+      });
+    });
+  });
+
+  // selectボタンで実行
   document.querySelector(".js-setMonth").addEventListener('click', function() {
     fetchData();
   });
   
   // スプシ取得
   async function fetchData() {
+    
     const monthInput = document.querySelector("#month").value;
     if (!monthInput) {
       alert("年月を選択してください");
@@ -301,4 +314,3 @@ $(function() {
     total.textContent = value;
   }
 }
-

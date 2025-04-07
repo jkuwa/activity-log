@@ -540,28 +540,14 @@ a:hover {
     padding-left: 40px;
   }
 }
-.p-report__head ul {
-  display: flex;
-  align-items: center;
-  font-size: 1.4rem;
+.p-report__head fieldset {
+  border: none;
 }
-@media (min-width: 768px) {
-  .p-report__head ul {
-    font-size: 1.6rem;
-  }
+.p-report__head fieldset label + label {
+  margin-left: 18px;
 }
-.p-report__head ul li + li::before {
-  content: "/";
-  padding-inline: 6px;
-}
-.p-report__head ul button {
-  padding: 6px 12px;
-  color: #D7D7D7;
-}
-.p-report__head ul button.is-selected {
-  color: #246286;
-  font-weight: 700;
-  pointer-events: none;
+.p-report__head input[type=radio] {
+  margin-right: 4px;
 }
 .p-report__select {
   margin-top: 18px;
@@ -586,20 +572,24 @@ a:hover {
     display: block;
   }
 }
-.p-report__select input {
+.p-report__select input, .p-report__select select {
   padding: 6px 24px;
   width: 172px;
   border: 1px solid #246286;
   border-radius: 4px;
   background-color: #FEFEFE;
+  display: none;
   color: #246286;
   text-align: center;
 }
 @media (min-width: 768px) {
-  .p-report__select input {
+  .p-report__select input, .p-report__select select {
     padding-block: 8px;
     width: 220px;
   }
+}
+.p-report__select input.is-open, .p-report__select select.is-open {
+  display: block;
 }
 .p-report__select button {
   padding: 4px 16px;
