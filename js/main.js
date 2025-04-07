@@ -96,10 +96,10 @@ $(function() {
   const ctx = document.querySelector(".js-chart");
 
   // ---------- form 切り替え ----------
-  const type = document.querySelectorAll("input[name='select']");
+  const mode = document.querySelectorAll("input[name='mode']");
   const input = document.querySelectorAll(".js-select");
 
-  type.forEach( (radio) => {
+  mode.forEach( (radio) => {
     radio.addEventListener('change', function() {
       input.forEach( (e) => {
         e.classList.toggle('is-open');
@@ -108,48 +108,55 @@ $(function() {
   });
 
   // selectボタンで実行
-  document.querySelector(".js-setMonth").addEventListener('click', function() {
+  document.querySelector(".js-setBtn").addEventListener('click', function() {
     fetchData();
   });
   
-  // スプシ取得
+  // GASからデータ取得
   async function fetchData() {
-    
-    const monthInput = document.querySelector("#month").value;
-    if (!monthInput) {
-      alert("年月を選択してください");
-      return;
-    }
+    const modeSelect = document.querySelector('input[name="mode"]:checked').value;
+    const monthValue = document.querySelector("#month").value;
+    const yearValue = document.querySelector('select[name="year"]').value;
 
-    const [year, month] = monthInput.split("-");
-    const url = `https://script.google.com/macros/s/AKfycby_DNGYh2nVOOr_jCRum4Y2iwZyGS6W6uHRcvzHveGK0qNxkKQKS460CJ_JurU8YZD9/exec?year=${year}&month=${month}`;
+    let url = 'https://script.google.com/macros/s/AKfycbyXMcDbSBdCo01GwgduTl1f1EF_DppS45kpm2ACimXZHgmYZwz5IyXzGsQ5wvjH5NCo/exec';
+    let title = '';
+
+    if ( modeSelect === 'month' ) {
+      const [year, month] = monthValue.split("-");
+      url += `?mode=month&year=${year}&month=${month}`;
+      title = `${year}/${month}`;
+
+    } else if ( modeSelect === 'year' ) {
+      url += `?mode=year&year=${yearValue}`;
+      title = yearValue + '年';
+    }   
 
     try {
-      const response = await fetch(url);   // 非同期でデータ取得
+      const response = await fetch (url);   // 非同期でデータ取得
       const data = await response.json();   // JSON読み取り
-      const title = `${year}/${month}`;
 
-      const weeklyData = data.weeklyData;
+      const organizedData = data.data;
       const totalHours = data.totalHours;
       const categoryRanking = data.categoryRanking;
 
       // setTitle(title);
-      updateChart(weeklyData, title, categoryRanking);
+      updateChart(organizedData, title, categoryRanking);
       setTotal(totalHours);
 
-    } catch (error) {
-      console.error("データ取得エラー: ", error);
+    } catch (err) {
+      console.log("データ取得エラー: " + err);
       alert("データ取得に失敗しました");
     }
   }
 
   // ---------- グラフ描画 ----------
   function updateChart(data, title, ranking) {
-    // weekKeyを取得
+    console.log(data);
+    // dateKeyを取得
     const dataArr = Object.values(data);
-    const allWeekKeys = [...new Set( dataArr.flatMap( item => Object.keys(item)))];
-    allWeekKeys.sort( (a, b) => a.localeCompare(b, undefined, {numeric: true}) );   // 順に並べる
-    const labels = allWeekKeys;
+    const allDateKeys = [...new Set( dataArr.flatMap( item => Object.keys(item)))];
+    allDateKeys.sort( (a, b) => a.localeCompare(b, undefined, {numeric: true}) );   // 順に並べる
+    const labels = allDateKeys;
 
     // カテゴリ名取得
     const categories = Object.keys(data);
@@ -158,8 +165,8 @@ $(function() {
     const datasets = categories.map( category => {
       return {
         label: category,
-        data: labels.map( weekKey => {
-          return data[category][weekKey] ? data[category][weekKey] : 0;
+        data: labels.map( dateKey => {
+          return data[category][dateKey] ? data[category][dateKey] : 0;
         })
       };
     });
@@ -237,7 +244,7 @@ $(function() {
         maintainAspectRatio: false
       }
     });
-
+    
     // ---------- カテゴリランキング作成 ---------
     // 対応する色を取得
     const topCategories = ranking.map( item => {
