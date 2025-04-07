@@ -24,16 +24,16 @@
       <p>千葉県でフリーランスのコーダーとして活動しています。<br>静的サイトのコーディングやWordPressオリジナルテーマを用いたWebサイト制作を中心に手掛けています。<br>日々の活動や学習の記録をつけています。</p>
     </section>
 
-    <div class="p-contents">
+    <div class="p-contents js-container">
       <div class="p-contents__tabs" role="tablist" aria-label="活動記録タブ">
         <div class="c-inner">
-          <button id="tab_log" class="c-button--tab js-tabBtn is-current" type="button" role="tab" aria-selected="true" aria-controls="log" tabindex="0">log</button>
-          <button id="tab_report" class="c-button--tab js-tabBtn" type="button" role="tab" aria-selected="false" aria-controls="report" tabindex="-1">report</button>
+          <button id="tab_log" class="c-button--tab js-tabBtn is-current" type="button" role="tab" aria-selected="true" aria-controls="log" tabindex="0" data-tab="log">log</button>
+          <button id="tab_report" class="c-button--tab js-tabBtn" type="button" role="tab" aria-selected="false" aria-controls="report" tabindex="-1" data-tab="report">report</button>
         </div>
       </div>
 
       <!-- LOG SECTION -->
-      <section id="log" class="c-bg--check p-log js-tabContent is-open" role="tabpanel" aria-labelledby="tab_log" tabindex="0">
+      <section id="log" class="c-content p-log js-tabContent is-open" role="tabpanel" aria-labelledby="tab_log" tabindex="0" data-tab="log">
         <div class="c-inner">
           <!-- CALENDAR -->
           <div class="p-calendar js-calendar"></div>
@@ -135,7 +135,7 @@
       </section>
 
       <!-- REPORT SECTION -->
-      <div id="report" class="c-bg--check p-report js-tabContent" role="tabpanel" aria-labelledby="tab_report" tabindex="0">
+      <div id="report" class="c-content p-report js-tabContent" role="tabpanel" aria-labelledby="tab_report" tabindex="0" data-tab="report">
         <div class="c-inner">
           <div class="p-report__head">
             <fieldset>

@@ -71,6 +71,7 @@ a:hover {
   border-bottom: 1px solid #FEFEFE;
   border-radius: 8px 8px 0 0;
   text-align: center;
+  transition: padding 0.4s 0.2s ease-in-out;
 }
 @media (min-width: 768px) {
   .c-button--tab {
@@ -145,18 +146,34 @@ a:hover {
   vertical-align: baseline;
 }
 
-/* ----- background component ----- */
-.c-bg--check {
+/* ----- content component ----- */
+.c-content {
+  width: 100%;
+  border-top: 1px solid #D7D7D7;
   background-image: linear-gradient(rgba(217, 217, 217, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(217, 217, 217, 0.3) 1px, transparent 1px);
   background-position: 5px 5px;
   background-size: 15px 15px;
   background-repeat: repeat;
+  position: absolute;
+  top: 56px;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s 0.2s ease-in-out, transform 0.4s 0.2s ease-in-out;
 }
 @media (min-width: 768px) {
-  .c-bg--check {
+  .c-content {
     background-position: 10px 10px;
     background-size: 20px 20px;
+    top: 80px;
   }
+}
+.c-content.is-open {
+  pointer-events: auto;
+  position: relative;
+  top: 0;
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* ----- header ----- */
@@ -240,14 +257,15 @@ a:hover {
 
 /* ----- contents ----- */
 .p-contents {
-  margin-top: 56px;
+  padding-top: 56px;
   width: 100%;
   border-bottom: 1px solid #D7D7D7;
   position: relative;
+  overflow: hidden;
 }
 @media (min-width: 768px) {
   .p-contents {
-    margin-top: 80px;
+    padding-top: 80px;
   }
 }
 .p-contents__tabs {
@@ -272,7 +290,7 @@ a:hover {
 /* ----- log section ----- */
 .p-log {
   padding: 92px 0 40px;
-  display: none;
+  transform: translateX(-50px);
 }
 @media (min-width: 768px) {
   .p-log {
@@ -308,9 +326,6 @@ a:hover {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-}
-.p-log.is-open {
-  display: block;
 }
 
 /* ----- calendar ----- */
@@ -524,8 +539,8 @@ a:hover {
 /* ----- report section ----- */
 .p-report {
   padding: 96px 0 128px;
-  display: none;
   overflow-x: hidden;
+  transform: translateX(50px);
 }
 @media (min-width: 768px) {
   .p-report {
@@ -598,9 +613,6 @@ a:hover {
   .p-report__select button {
     padding: 6px 18px;
   }
-}
-.p-report.is-open {
-  display: block;
 }
 
 /* ----- graph ----- */

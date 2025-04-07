@@ -2,13 +2,14 @@
 
 /* ----- contents ----- */
 .p-contents {
-  margin-top: 56px;
+  padding-top: 56px;
   width: 100%;
   border-bottom: 1px solid $gray-color;
   position: relative;
+  overflow: hidden;
 
   @include breakpoint(tablet) {
-    margin-top: 80px;
+    padding-top: 80px;
   }
 
   &__tabs {

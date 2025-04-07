@@ -3,8 +3,8 @@
 /* ----- report section ----- */
 .p-report {
   padding: 96px 0 128px;
-  display: none;
   overflow-x: hidden;
+  transform: translateX(50px);
 
   @include breakpoint(tablet) {
     padding: 170px 0 200px;
@@ -80,9 +80,5 @@
         padding: 6px 18px;
       }
     }
-  }
-
-  &.is-open {
-    display: block;
   }
 }

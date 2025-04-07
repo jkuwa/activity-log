@@ -9,20 +9,22 @@ $(function() {
       return;
     }
     // 選択中のタブを外す
-    $(".is-current").removeClass('is-current').attr({
+    $(".js-tabBtn").removeClass('is-current').attr({
       'aria-selected': 'false',
       'tabindex': '-1',
     });
     $(".js-tabContent").removeClass('is-open');
 
-    // コンテンツを表示
-    const index = $(".js-tabBtn").index(this);
-    $(".js-tabContent").eq(index).addClass('is-open');
     // タブの切り替え
     $(this).addClass('is-current').attr({
       'aria-selected': 'true',
       'tabindex': '0'
-    })
+    });
+
+    // コンテンツを表示
+    const data = $(this).data('tab');
+    const targetContent = $(`.js-tabContent[data-tab="${data}"]`);
+    targetContent.addClass('is-open');
   });
 
   // キーボード操作
