@@ -21,6 +21,7 @@
 @use "object/component/inner";
 @use "object/component/text";
 @use "object/component/content";
+@use "object/component/animation";
 
 
 //  ----- project ----- 
@@ -33,6 +34,7 @@
 @use "object/project/report";
 @use "object/project/graph";
 @use "object/project/table";
+@use "object/project/loader";
 
 
 // ----- utility -----

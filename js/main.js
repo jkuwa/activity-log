@@ -112,6 +112,7 @@ $(function() {
   // selectボタンで実行
   document.querySelector(".js-setBtn").addEventListener('click', function() {
     fetchData();
+    document.querySelector(".js-loader").classList.add('is-appeared');
   });
   
   // GASからデータ取得
@@ -141,7 +142,6 @@ $(function() {
       const totalHours = data.totalHours;
       const categoryRanking = data.categoryRanking;
 
-      // setTitle(title);
       updateChart(organizedData, title, categoryRanking);
       setTotal(totalHours);
 
@@ -153,7 +153,6 @@ $(function() {
 
   // ---------- グラフ描画 ----------
   function updateChart(data, title, ranking) {
-    console.log(data);
     // dateKeyを取得
     const dataArr = Object.values(data);
     const allDateKeys = [...new Set( dataArr.flatMap( item => Object.keys(item)))];
@@ -173,6 +172,7 @@ $(function() {
       };
     });
 
+
     // ---------- Chart.js 設定 ----------
     // グラフ初期化
     if (myChart) {
@@ -180,6 +180,7 @@ $(function() {
     }
     
     const mainColor = '#246286';
+    let animationStarted = false;
     Chart.defaults.font.family = "'M PLUS Rounded 1c', 'sans-serif'";
 
     myChart = new Chart(ctx, {
@@ -243,9 +244,21 @@ $(function() {
         },
         barPercentage: 0.5,
         responsive: true,
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        animation: {
+          onProgress: () => {
+            if ( !animationStarted ) {
+              animationStarted = true;
+              document.querySelector(".js-loader").classList.remove('is-appeared');
+            }
+          }
+        }
       }
     });
+
+    if ( !datasets.length ) {
+      document.querySelector(".js-loader").classList.remove('is-appeared');
+    }
     
     // ---------- カテゴリランキング作成 ---------
     // 対応する色を取得
