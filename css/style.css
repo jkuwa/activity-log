@@ -239,6 +239,18 @@ a:hover {
     opacity: 1;
   }
 }
+/* ----- blowing component ----- */
+.c-blowing {
+  position: absolute;
+}
+.c-blowing svg {
+  width: 100%;
+  height: 100%;
+}
+.c-blowing svg path {
+  vector-effect: non-scaling-stroke;
+}
+
 /* ----- header ----- */
 .p-header h1 {
   font-size: 0;
@@ -601,13 +613,13 @@ a:hover {
 
 /* ----- report section ----- */
 .p-report {
-  padding: 96px 0 128px;
+  padding: 96px 0 80px;
   overflow-x: hidden;
   transform: translateX(50px);
 }
 @media (min-width: 768px) {
   .p-report {
-    padding: 170px 0 200px;
+    padding: 170px 0 120px;
   }
 }
 .p-report__head {
@@ -774,7 +786,8 @@ a:hover {
   }
 }
 .p-graph__ranking {
-  margin-top: 116px;
+  margin-top: 28px;
+  padding: 88px 0 63px 0;
   max-width: 100%;
   display: inline-block;
   position: relative;
@@ -782,11 +795,20 @@ a:hover {
 }
 @media (min-width: 768px) {
   .p-graph__ranking {
-    margin: 156px 13% 0 0;
-    padding: 0 10.7% 0 8.8%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 34px 0 0 15.2%;
+    padding: 122px 0 88px 0;
+  }
+}
+.p-graph__ranking > div {
+  width: calc(100% + 68px + 73px);
+  height: 100%;
+  top: 0;
+  left: -68px;
+}
+@media (min-width: 768px) {
+  .p-graph__ranking > div {
+    width: calc(100% + 76px + 89px);
+    left: -76px;
   }
 }
 .p-graph__ranking h2 {
@@ -807,25 +829,6 @@ a:hover {
 @media (min-width: 768px) {
   .p-graph__ranking h2 span:last-child {
     font-size: 2.8rem;
-  }
-}
-.p-graph__ranking img {
-  width: calc(100% + 58px + 60px);
-  height: calc(100% + 77px + 65px);
-  max-width: none;
-  position: absolute;
-  top: -77px;
-  left: -58px;
-  -o-object-fit: fill;
-     object-fit: fill;
-  pointer-events: none;
-}
-@media (min-width: 768px) {
-  .p-graph__ranking img {
-    width: 100%;
-    height: calc(100% + 116px + 88px);
-    top: -116px;
-    left: 0;
   }
 }
 
@@ -952,16 +955,8 @@ a:hover {
   position: relative;
 }
 .p-loader__blowing {
-  position: absolute;
   inset: 0;
   transform: scale(-1, -1);
-}
-.p-loader__blowing svg {
-  width: 100%;
-  height: 100%;
-}
-.p-loader__blowing svg path {
-  vector-effect: non-scaling-stroke;
 }
 .p-loader.is-appeared {
   opacity: 1;
