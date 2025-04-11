@@ -53,7 +53,7 @@
   }
 
   &:hover {
-    margin-bottom: 3px;
+    margin: 3px 0;
 
     &::before {
       bottom: -3px;
@@ -61,7 +61,7 @@
   }
 
   &:active {
-    margin: 0px;
+    margin: 6px 0 0;
 
     &::before {
       bottom: 0;

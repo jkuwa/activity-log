@@ -116,13 +116,13 @@ a:hover {
   transition: bottom 0.2s;
 }
 .c-button--select:hover {
-  margin-bottom: 3px;
+  margin: 3px 0;
 }
 .c-button--select:hover::before {
   bottom: -3px;
 }
 .c-button--select:active {
-  margin: 0px;
+  margin: 6px 0 0;
 }
 .c-button--select:active::before {
   bottom: 0;
