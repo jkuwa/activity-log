@@ -9,7 +9,7 @@
   background-size: 15px 15px;
   background-repeat: repeat;
   position: absolute;
-  top: 56px;
+  top: 62px;
   left: 0;
   pointer-events: none;
   opacity: 0;
@@ -18,7 +18,7 @@
   @include breakpoint(tablet) {
     background-position: 10px 10px;
     background-size: 20px 20px;
-    top: 80px;
+    top: 86px;
   }
 
   &.is-open {

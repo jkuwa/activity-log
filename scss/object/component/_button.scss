@@ -3,13 +3,14 @@
 
 /* ----- button component ----- */
 .c-button--tab {
+  margin-bottom: -1px;
   padding: 15px 0 9px;
   width: 120px;
   border: 1px solid $main-color;
   border-bottom: 1px solid $bg-color;
   border-radius: 8px 8px 0 0;
   text-align: center;
-  transition: padding .4s .2s ease-in-out;
+  transition: padding .4s .2s ease-in-out, transform .3s ease-in-out;
 
   @include breakpoint(tablet) {
     padding: 24px 0 18px;
@@ -18,9 +19,15 @@
     font-size: 2rem;
   }
 
+  &:hover {
+    font-weight: 700;
+    transform: translateY(-6px);
+  }
+
   &.is-current {
     padding-bottom: 15px;
     font-weight: 700;
+    pointer-events: none;
 
     @include breakpoint(tablet) {
       padding-bottom: 24px;
