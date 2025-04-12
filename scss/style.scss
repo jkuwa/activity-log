@@ -11,6 +11,7 @@
 // ============================================================
 @use "layout/l-header";
 @use "layout/l-main";
+@use "layout/l-footer";
 
 
 // ============================================================
@@ -36,6 +37,7 @@
 @use "object/project/graph";
 @use "object/project/table";
 @use "object/project/loader";
+@use "object/project/footer";
 
 
 // ----- utility -----

@@ -64,6 +64,11 @@ a:hover {
   width: 100%;
 }
 
+/* ----- footer layout ----- */
+.l-footer {
+  padding: 4px 16px;
+}
+
 /* ----- button component ----- */
 .c-button--tab {
   padding: 15px 0 9px;
@@ -1035,5 +1040,12 @@ a:hover {
 .p-loader.is-appeared .c-loader {
   -webkit-animation-name: loader;
           animation-name: loader;
+}
+
+/* ----- footer ----- */
+.p-footer small {
+  display: block;
+  font-size: 1.2rem;
+  line-height: 1;
 }
 /*# sourceMappingURL=style.css.map */
