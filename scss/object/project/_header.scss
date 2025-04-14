@@ -2,7 +2,11 @@
 
 /* ----- header ----- */
 .p-header {
+  display: grid;
+  place-content: center;
+
   h1 {
+    margin-top: -56px;
     font-size: 0;
     text-align: center;
   }
@@ -17,12 +21,10 @@
   }
 
   &__titleTxt {
-    g {
-      fill: $main-color;
+    fill: $main-color;
 
-      path {
-        stroke-width: 0;
-      }
+    path {
+      stroke-width: 0;
     }
   }
 
@@ -30,7 +32,7 @@
     path {
       fill: none;
       stroke: $bg-color;
-      stroke-dasharray: 3100px;
+      stroke-dasharray: 3120px;
       animation: title 6s ease-in-out forwards;
     }
   }
@@ -39,7 +41,7 @@
 @keyframes title {
   0% {
     opacity: 0;
-    stroke-dashoffset: 3100px;
+    stroke-dashoffset: 3120px;
   }
   100% {
     stroke-dashoffset: 0;

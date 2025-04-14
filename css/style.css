@@ -50,13 +50,8 @@ a:hover {
 
 /* ----- header layout ----- */
 .l-header {
-  padding-block: 200px;
   width: 100%;
-}
-@media (min-width: 768px) {
-  .l-header {
-    padding: 320px 0 400px;
-  }
+  height: 100vh;
 }
 
 /* ----- main layout ----- */
@@ -204,6 +199,7 @@ a:hover {
 /* ----- content component ----- */
 .c-content {
   width: 100%;
+  visibility: hidden;
   border-top: 1px solid #D7D7D7;
   background-image: linear-gradient(rgba(217, 217, 217, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(217, 217, 217, 0.3) 1px, transparent 1px);
   background-position: 5px 5px;
@@ -212,7 +208,6 @@ a:hover {
   position: absolute;
   top: 62px;
   left: 0;
-  pointer-events: none;
   opacity: 0;
   transition: opacity 0.4s 0.2s ease-in-out, transform 0.4s 0.2s ease-in-out;
 }
@@ -224,7 +219,7 @@ a:hover {
   }
 }
 .c-content.is-open {
-  pointer-events: auto;
+  visibility: visible;
   position: relative;
   top: 0;
   opacity: 1;
@@ -307,7 +302,12 @@ a:hover {
 }
 
 /* ----- header ----- */
+.p-header {
+  display: grid;
+  place-content: center;
+}
 .p-header h1 {
+  margin-top: -56px;
   font-size: 0;
   text-align: center;
 }
@@ -320,16 +320,16 @@ a:hover {
     width: clamp(400px, 50vw, 600px);
   }
 }
-.p-header__titleTxt g {
+.p-header__titleTxt {
   fill: #246286;
 }
-.p-header__titleTxt g path {
+.p-header__titleTxt path {
   stroke-width: 0;
 }
 .p-header__titleMask path {
   fill: none;
   stroke: #FEFEFE;
-  stroke-dasharray: 3100px;
+  stroke-dasharray: 3120px;
   -webkit-animation: title 6s ease-in-out forwards;
           animation: title 6s ease-in-out forwards;
 }
@@ -337,7 +337,7 @@ a:hover {
 @-webkit-keyframes title {
   0% {
     opacity: 0;
-    stroke-dashoffset: 3100px;
+    stroke-dashoffset: 3120px;
   }
   100% {
     stroke-dashoffset: 0;
@@ -348,7 +348,7 @@ a:hover {
 @keyframes title {
   0% {
     opacity: 0;
-    stroke-dashoffset: 3100px;
+    stroke-dashoffset: 3120px;
   }
   100% {
     stroke-dashoffset: 0;
