@@ -329,7 +329,7 @@ a:hover {
 .p-header__titleMask path {
   fill: none;
   stroke: #FEFEFE;
-  stroke-dasharray: 3120px;
+  stroke-dasharray: 3080px;
   -webkit-animation: title 6s ease-in-out forwards;
           animation: title 6s ease-in-out forwards;
 }
@@ -337,7 +337,7 @@ a:hover {
 @-webkit-keyframes title {
   0% {
     opacity: 0;
-    stroke-dashoffset: 3120px;
+    stroke-dashoffset: 3080px;
   }
   100% {
     stroke-dashoffset: 0;
@@ -348,7 +348,7 @@ a:hover {
 @keyframes title {
   0% {
     opacity: 0;
-    stroke-dashoffset: 3120px;
+    stroke-dashoffset: 3080px;
   }
   100% {
     stroke-dashoffset: 0;

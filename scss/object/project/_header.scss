@@ -32,7 +32,7 @@
     path {
       fill: none;
       stroke: $bg-color;
-      stroke-dasharray: 3120px;
+      stroke-dasharray: 3080px;
       animation: title 6s ease-in-out forwards;
     }
   }
@@ -41,7 +41,7 @@
 @keyframes title {
   0% {
     opacity: 0;
-    stroke-dashoffset: 3120px;
+    stroke-dashoffset: 3080px;
   }
   100% {
     stroke-dashoffset: 0;
